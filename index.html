@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="SonThee'">
-        <title> Star Animaiton </title>
-        <link rel="stylesheet" href="star.css"/>
+        <title>Check lờ</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                
+                //by default, submit button is disabled
+                document.querySelector("#submit").disabled = true;
+
+                document.querySelector("#task").onkeyup = () => {
+                    if (document.querySelector("#task").value.length != 0) {
+                        document.querySelector("#submit").disabled = false;
+                    }
+                    else {
+                        document.querySelector("#submit").disabled = true;
+                    }
+                };
+
+                document.querySelector("form").onsubmit = () => {
+                    const task = document.querySelector("#task").value;
+                    
+                    const li = document.createElement("li");
+                    li.innerHTML = task;
+                    //const letter.outerHTML = li
+
+                    if (task.length !== 0) {
+                        if (task == 'l') alert("chữ lờ");
+                        else if (task == 'I') alert("chữ i hoa");
+                        else alert("Nhập chữ I hoặc l đê");
+                    };
+                    document.querySelector("#task").value = "";
+                    // Stop submitting 
+                    return false;
+                };
+            });
+        </script>
     </head>
     <body>
-        <div class="wrapper">
-            <div class="frame">
-                <div class="square" id="s0"></div>
-                <div class="square" id="s1"></div>
-                <div class="square" id="s2"></div>
-                <div class="square" id="s3"></div>
-                <div class="square" id="s4"></div>
-                <div class="square" id="s5"></div><div class="square" id="s0"></div>
-                <div class="square" id="s6"></div>
-                <div class="square" id="s7"></div>
-                <div class="square" id="s8"></div>
-                <div class="square" id="s9"></div>
-                <div class="square" id="s10"></div>
-                <div class="square" id="s11"></div>
-                <div class="square" id="s12"></div>
-            </div>
-        </div>
+        <h1>Nhập chữ i hoa hoặc lờ đê</h1>
+        <form>
+            <input id="task" type="text" placeholder="Nhập chữ">
+            <input id="submit" type="submit">
+        </form>
     </body>
 </html>
